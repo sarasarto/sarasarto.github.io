@@ -3,35 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Name</title>
+<title>Sara Sarto</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #222; background: #fff; }
   .container { display: flex; min-height: 100vh; }
   /* LEFT SIDEBAR */
-  .sidebar { width: 320px; background: #0057b8; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+  .sidebar { width: 320px; background: #0057b8; color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 20px; }
   .sidebar h1 { font-size: 32px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
   .sidebar h2 { font-size: 16px; font-weight: normal; margin: 0 0 20px; text-align: center; }
   .sidebar a { color: #fff; text-decoration: none; }
   .sidebar a:hover { text-decoration: underline; }
-  .sidebar .icons { display: flex; gap: 16px; margin-top: 20px; }
+  .sidebar .icons { display: flex; gap: 16px; justify-content: center; margin-top: 20px; }
   .sidebar .icons a { font-size: 22px; text-decoration: none; color: #fff; }
+
+  /* NAVIGATION INSIDE MAIN */
+  nav { text-align: left; margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 8px; }
+  nav a { margin-right: 24px; color: #0057b8; text-decoration: none; letter-spacing: 1px; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
 
   /* MAIN CONTENT */
   main { flex: 1; padding: 40px 60px; max-width: 850px; }
-  nav { text-align: right; margin-bottom: 30px; }
-  nav a { margin-left: 24px; color: #0057b8; text-decoration: none; letter-spacing: 1px; font-weight: 500; }
-  nav a:hover { text-decoration: underline; }
   p { line-height: 1.7; margin-bottom: 1.1em; }
   h3 { margin-top: 40px; font-size: 22px; letter-spacing: 1px; border-top: 1px solid #ccc; padding-top: 12px; color: #333; }
-  .pub { margin-bottom: 25px; }
+  .pub { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #ccc; }
+  .pub:last-of-type { border-bottom: none; }
   .pub-title { font-weight: 600; font-size: 17px; color: #222; }
   .pub-meta { color: #555; font-size: 14px; margin-top: 3px; }
   .pub-tldr { font-size: 15px; color: #444; margin-top: 6px; }
   footer { font-size: 14px; color: #888; margin-top: 40px; }
   @media (max-width: 900px) {
     .container { flex-direction: column; }
-    .sidebar { width: 100%; flex-direction: row; justify-content: space-between; text-align: left; }
+    .sidebar { width: 100%; text-align: center; }
     main { padding: 30px 20px; }
   }
 </style>
@@ -42,8 +45,8 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div>
-      <h1>YOUR<br>NAME</h1>
-      <h2>you@university.edu</h2>
+      <h1>SARA<br>SARTO</h1>
+      <h2>sara.sarto@unimore.it</h2>
       <a href="#">Resume</a>
       <div class="icons">
         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -57,7 +60,7 @@
   <main>
     <nav>
       <a href="#home">HOME</a>
-      <a href="#blog">BLOG</a>
+      <a href="#publications">PUBBLICAZIONI</a>
     </nav>
 
     <section id="home">
@@ -66,17 +69,17 @@
       <p>Outside research, I enjoy climbing, running, and making things.</p>
     </section>
 
-    <h3>SELECTED PUBLICATIONS</h3>
+    <h3 id="publications">SELECTED PUBLICATIONS</h3>
 
     <div class="pub">
       <div class="pub-title"><a href="#">An Introduction to Vision-Language Modeling</a></div>
-      <div class="pub-meta">Your Name, Coauthors · arXiv 2025</div>
+      <div class="pub-meta">Sara Sarto, Coauthors · arXiv 2025</div>
       <div class="pub-tldr">TL;DR: An overview of VLMs as of 2025, covering architectures, evaluation, and alignment.</div>
     </div>
 
     <div class="pub">
       <div class="pub-title"><a href="#">Title of Your Paper</a></div>
-      <div class="pub-meta">Your Name*, Collaborator* · NAACL 2024</div>
+      <div class="pub-meta">Sara Sarto*, Collaborator* · NAACL 2024</div>
       <div class="pub-tldr">TL;DR: Short explanation of the core contribution.</div>
     </div>
 
