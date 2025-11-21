@@ -1,168 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name</title>
-  <meta name="description" content="Your Name — researcher in X. Selected publications, bio, links, and CV." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --fg:#0b0b0b; --muted:#6b6b6b; --bg:#ffffff; --link:#0a66c2; --rule:#e5e5e5;
-      --max:820px; --pad:20px;
-    }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);}    
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;font-size:17px}
-    a{color:var(--link);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max);margin:0 auto;padding:32px var(--pad) 64px}
-    header{display:flex;gap:20px;align-items:flex-start}
-    header img{width:112px;height:112px;object-fit:cover;border-radius:8px;flex:0 0 112px}
-    .title{flex:1}
-    h1{font-family:"Playfair Display",serif;font-weight:700;font-size:42px;line-height:1.15;margin:0 0 6px;text-transform:lowercase}
-    .contact{color:var(--muted);font-size:15px}
-    .links{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap}
-    .nav{margin-top:14px;display:flex;gap:16px;font-size:15px}
-    hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
-    h2{font-family:"Playfair Display",serif;font-size:24px;margin:0 0 10px}
-    .lead{margin:0 0 10px}
-    .pubs{display:grid;gap:22px}
-    .pub{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start}
-    .thumb{width:120px;height:80px;background:#f4f4f4;border:1px solid var(--rule);border-radius:6px;object-fit:cover}
-    .pub h3{margin:0 0 4px;font-size:18px;line-height:1.3}
-    .pub .meta{font-size:14px;color:var(--muted);margin-bottom:6px}
-    .pub .tldr{margin:0}
-    .sep{height:1px;background:var(--rule);margin:8px 0 0}
-    footer{color:var(--muted);font-size:14px;margin-top:40px}
-    .stars{letter-spacing:6px;color:#bbb;font-weight:400}
-    /* Responsive */
-    @media (max-width:640px){
-      header{flex-direction:column;align-items:flex-start}
-      header img{width:96px;height:96px}
-      .pub{grid-template-columns:1fr}
-      .thumb{width:100%;height:160px}
-    }
-    /* Print */
-    @media print{
-      a[href]:after{content:" (" attr(href) ")";font-size:12px;color:#888}
-      .nav,.links{display:none}
-      body{font-size:12pt}
-      .thumb{display:none}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #222; background: #fff; }
+  .container { display: flex; min-height: 100vh; }
+  /* LEFT SIDEBAR */
+  .sidebar { width: 320px; background: #0057b8; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+  .sidebar h1 { font-size: 32px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
+  .sidebar h2 { font-size: 16px; font-weight: normal; margin: 0 0 20px; text-align: center; }
+  .sidebar a { color: #fff; text-decoration: none; }
+  .sidebar a:hover { text-decoration: underline; }
+  .sidebar .icons { display: flex; gap: 16px; margin-top: 20px; }
+  .sidebar .icons a { font-size: 22px; text-decoration: none; color: #fff; }
+
+  /* MAIN CONTENT */
+  main { flex: 1; padding: 40px 60px; max-width: 850px; }
+  nav { text-align: right; margin-bottom: 30px; }
+  nav a { margin-left: 24px; color: #0057b8; text-decoration: none; letter-spacing: 1px; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  p { line-height: 1.7; margin-bottom: 1.1em; }
+  h3 { margin-top: 40px; font-size: 22px; letter-spacing: 1px; border-top: 1px solid #ccc; padding-top: 12px; color: #333; }
+  .pub { margin-bottom: 25px; }
+  .pub-title { font-weight: 600; font-size: 17px; color: #222; }
+  .pub-meta { color: #555; font-size: 14px; margin-top: 3px; }
+  .pub-tldr { font-size: 15px; color: #444; margin-top: 6px; }
+  footer { font-size: 14px; color: #888; margin-top: 40px; }
+  @media (max-width: 900px) {
+    .container { flex-direction: column; }
+    .sidebar { width: 100%; flex-direction: row; justify-content: space-between; text-align: left; }
+    main { padding: 30px 20px; }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <div class="wrap">
-    <!-- HEADER -->
-    <header>
-      <!-- Replace with your headshot in /images/ and update src -->
-      <img src="images/your_photo.jpg" alt="Your Name" />
-      <div class="title">
-        <h1>your name</h1>
-        <div class="contact">you(at)uni.it</div>
-        <div class="links">
-          <a href="#" target="_blank" rel="noopener">Resume</a>
-          <a href="#" target="_blank" rel="noopener">Google Scholar</a>
-          <a href="#" target="_blank" rel="noopener">GitHub</a>
-          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-        <nav class="nav">
-          <a href="#home">home</a>
-          <a href="#blog">blog</a>
-        </nav>
+<div class="container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <h1>YOUR<br>NAME</h1>
+      <h2>you@university.edu</h2>
+      <a href="#">Resume</a>
+      <div class="icons">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </div>
-    </header>
+    </div>
+  </aside>
 
-    <hr>
+  <!-- MAIN CONTENT -->
+  <main>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#blog">BLOG</a>
+    </nav>
 
-    <!-- INTRO / ABOUT -->
     <section id="home">
-      <p class="lead">
-        I'm a machine learning researcher focusing on multimodal AI and evaluation.
-        Previously, I completed my Ph.D. at <a href="#">Your University</a>. I work on
-        hallucination reduction, reliability, and multimodal reasoning.
-      </p>
-      <p class="lead">
-        Outside research, I enjoy <em>climbing</em>, <em>running</em>, and <em>making</em>.
-      </p>
+      <p>I'm a machine learning researcher working on multimodal AI.</p>
+      <p>Previously, I completed my Ph.D. at <a href="#">Your University</a>. I work on evaluation, hallucination reduction, and reliability for vision + language models.</p>
+      <p>Outside research, I enjoy climbing, running, and making things.</p>
     </section>
 
-    <div class="stars">* * *</div>
+    <h3>SELECTED PUBLICATIONS</h3>
 
-    <!-- SELECTED PUBLICATIONS -->
-    <section>
-      <h2>selected publications</h2>
-      <div class="pubs">
-        <!-- pub item -->
-        <article class="pub">
-          <img class="thumb" src="images/paper1.png" alt="Paper thumbnail" />
-          <div>
-            <h3><a href="#" target="_blank" rel="noopener">Title of Your Paper</a></h3>
-            <div class="meta">Your Name, Coauthor A, Coauthor B · CVPR 2025</div>
-            <p class="tldr">TL;DR: One-line takeaway of the paper. What it does, why it matters.</p>
-            <div class="links" style="margin-top:6px">
-              <a href="#">arXiv</a>
-              <a href="#">PDF</a>
-              <a href="#">Code</a>
-              <a href="#">BibTeX</a>
-            </div>
-          </div>
-        </article>
-        <div class="sep"></div>
-        <!-- pub item -->
-        <article class="pub">
-          <img class="thumb" src="images/paper2.png" alt="Paper thumbnail" />
-          <div>
-            <h3><a href="#" target="_blank" rel="noopener">Another Paper Title</a></h3>
-            <div class="meta">Your Name*, Collaborator* · NAACL 2024 (Oral)</div>
-            <p class="tldr">TL;DR: Short explanation of the core contribution.</p>
-            <div class="links" style="margin-top:6px">
-              <a href="#">Project</a>
-              <a href="#">PDF</a>
-              <a href="#">Code</a>
-            </div>
-          </div>
-        </article>
-        <div class="sep"></div>
-        <!-- pub item -->
-        <article class="pub">
-          <img class="thumb" src="images/paper3.png" alt="Paper thumbnail" />
-          <div>
-            <h3><a href="#" target="_blank" rel="noopener">Older Work Title</a></h3>
-            <div class="meta">Coauthor 1, Your Name · ECCV 2022</div>
-            <p class="tldr">TL;DR: What’s notable here in one sentence.</p>
-            <div class="links" style="margin-top:6px">
-              <a href="#">PDF</a>
-              <a href="#">Code</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
+    <div class="pub">
+      <div class="pub-title"><a href="#">An Introduction to Vision-Language Modeling</a></div>
+      <div class="pub-meta">Your Name, Coauthors · arXiv 2025</div>
+      <div class="pub-tldr">TL;DR: An overview of VLMs as of 2025, covering architectures, evaluation, and alignment.</div>
+    </div>
 
-    <div class="stars">* * *</div>
+    <div class="pub">
+      <div class="pub-title"><a href="#">Title of Your Paper</a></div>
+      <div class="pub-meta">Your Name*, Collaborator* · NAACL 2024</div>
+      <div class="pub-tldr">TL;DR: Short explanation of the core contribution.</div>
+    </div>
 
-    <!-- OPTIONAL: NEWS -->
-    <section>
-      <h2>news</h2>
-      <ul>
-        <li><strong>Nov 2025</strong> — Preprint: "PerturboLLaVA++" on arXiv.</li>
-        <li><strong>Sep 2025</strong> — Paper accepted to NeurIPS 2025.</li>
-        <li><strong>May 2025</strong> — Talk at Vision & Language Workshop.</li>
-      </ul>
-    </section>
-
-    <div class="stars">* * *</div>
-
-    <!-- FOOTER -->
     <footer>
-      Last updated <span id="lastUpdated">November 2025</span>. Built with plain HTML/CSS. Feel free to reuse this template with attribution.
+      Last updated November 2025.
     </footer>
-  </div>
-  <script>
-    // Auto-fill last-updated from file timestamp if hosted statically (fallback text above otherwise)
-  </script>
+  </main>
+</div>
 </body>
 </html>
