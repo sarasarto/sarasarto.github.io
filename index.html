@@ -24,7 +24,7 @@
 
   /* MAIN CONTENT */
   main { flex: 1; padding: 40px 60px; max-width: 850px; }
-  section { display: none; }
+  section { display: none; position: relative; top: 0; }
   section.active { display: block; }
   p { line-height: 1.7; margin-bottom: 1.1em; }
   h3 { margin-top: 40px; font-size: 22px; letter-spacing: 1px; border-top: 1px solid #ccc; padding-top: 12px; color: #333; }
@@ -54,12 +54,12 @@
     <div>
       <h1>SARA<br>SARTO</h1>
       <h2>sara.sarto@unimore.it</h2>
-      <img class="avatar" src="personal.jpeg" alt="Sara Sarto" />
+      <img class="avatar" src="/mnt/data/7aa54800-154c-412b-a4e5-c2c4114c472e.png" alt="Sara Sarto" />
       <div class="resume"><a href="#">Resume</a></div>
       <div class="icons">
-        <a href="https://www.linkedin.com/in/sara-sarto-4520a4209/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://scholar.google.com/citations?user=Y-DaVvEAAAAJ" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-        <a href="https://github.com/sarasarto" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </div>
     </div>
   </aside>
@@ -67,14 +67,14 @@
   <!-- MAIN CONTENT -->
   <main>
     <nav>
-      <a href="#home" onclick="showSection('home')">HOME</a>
-      <a href="#publications" onclick="showSection('publications')">PUBLICATIONS</a>
-      <a href="#projects" onclick="showSection('projects')">PROJECTS</a>
+      <a href="#home" onclick="showSection('home'); return false;">HOME</a>
+      <a href="#publications" onclick="showSection('publications'); return false;">PUBLICATIONS</a>
+      <a href="#projects" onclick="showSection('projects'); return false;">PROJECTS</a>
     </nav>
 
     <section id="home" class="active">
       <p>I'm a PhD candidate working on multimodal AI.</p>
-      <p>I completed my Ph.D. at the University of Modena and Reggio Emilia, conducting my research at <a href="https://aimagelab.ing.unimore.it/imagelab/">AImageLab</a>, co-advised by <a href="https://www.ritacucchiara.it/">Prof. Rita Cucchiara</a>, <a href="https://ailb-web.ing.unimore.it/~lorenzo/">Prof.Lorenzo Baraldi</a> and <a href="https://scholar.google.com/citations?user=DzgmSJEAAAAJ">Prof. Marcella Cornia</a>. I did a 6-month internship at Amazon in London during my PhD.</p>
+      <p>I completed my Ph.D. at the University of Modena and Reggio Emilia, conducting my research at <a href="#">AImageLab</a>, co-advised by <a href="#">Prof. Rita Cucchiara</a>, <a href="#">Prof.Lorenzo Baraldi</a> and <a href="#">Prof. Marcella Cornia</a>. I did a 6-month internship at Amazon in London during my PhD.</p>
       <p>At AImageLab, I worked on image captioning and evaluation and multimodal architectures. Nowadays, I am working on Multimodal LLMs, Retrieval-augmentation for multimodal models, and hallucination.</p>
 
       <h3 id="news">NEWS</h3>
@@ -133,14 +133,10 @@
 </div>
 <script>
   function showSection(id) {
-    // document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-    // document.getElementById(id).classList.add('active');
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
     const el = document.getElementById(id);
     el.classList.add('active');
-
-    /* 🔽  AGGIUNTA: forza la vista in cima senza scroll */
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({top: 0, behavior: 'instant'});
   }
 </script>
 </body>
