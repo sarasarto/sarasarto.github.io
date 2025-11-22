@@ -8,7 +8,6 @@
   * { box-sizing: border-box; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #222; background: #fff; }
   .container { display: flex; min-height: 100vh; }
-  /* LEFT SIDEBAR */
   .sidebar { width: 320px; background: #ebc7df; color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 20px; }
   .sidebar h1 { font-size: 32px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
   .sidebar h2 { font-size: 16px; font-weight: normal; margin: 0 0 20px; text-align: center; }
@@ -16,30 +15,33 @@
   .sidebar a:hover { text-decoration: underline; }
   .sidebar .icons { display: flex; gap: 16px; justify-content: center; margin-top: 20px; }
   .sidebar .icons a { font-size: 22px; text-decoration: none; color: #fff; }
-
-  /* NAVIGATION INSIDE MAIN */
   nav { text-align: left; margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 8px; }
   nav a { margin-right: 24px; color: #e6b0d5; text-decoration: none; letter-spacing: 1px; font-weight: 500; }
   nav a:hover { text-decoration: underline; }
-
-  /* MAIN CONTENT */
-  main { flex: 1; padding: 40px 60px; max-width: 850px; }
+  main { flex: 1; padding: 40px 60px; max-width: 980px; }
   section { display: none; position: relative; top: 0; }
   section.active { display: block; }
   p { line-height: 1.7; margin-bottom: 1.1em; }
-  h3 { margin-top: 40px; font-size: 22px; letter-spacing: 1px; border-top: 1px solid #ccc; padding-top: 12px; color: #333; }
+  h3 { margin: 0 0 16px; font-size: 26px; letter-spacing: .5px; color: #2b2b2b; }
   .pub { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #ccc; }
   .pub-title a { color: #555; text-decoration: none; }
   .pub-title a:hover { text-decoration: underline; color: #333; }
   .pub-title { font-weight: 600; font-size: 17px; color: #222; }
   .pub-meta { color: #555; font-size: 14px; margin-top: 3px; }
   .pub-tldr { font-size: 15px; color: #444; margin-top: 6px; }
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 20px; }
+  .news-card { border: 1px solid #ddd; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 3px 10px rgba(0,0,0,0.06); transition: transform .2s ease, box-shadow .2s ease; }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 8px 22px rgba(0,0,0,0.08); }
+  .news-card img { width: 100%; height: 170px; object-fit: cover; }
+  .news-content { padding: 16px 18px 18px; }
+  .news-title { margin: 0 0 8px; font-weight: 700; font-size: 20px; color: #2b2b2b; }
+  .news-date { font-size: 13px; color: #7a7a7a; margin-bottom: 10px; }
+  .news-text { font-size: 15px; color: #414141; }
+  .news-link { color: #0a66c2; text-decoration: none; font-weight: 600; }
+  .news-link:hover { text-decoration: underline; }
   footer { font-size: 14px; color: #888; margin-top: 40px; }
-  @media (max-width: 900px) {
-    .container { flex-direction: column; }
-    .sidebar { width: 100%; text-align: center; }
-    main { padding: 30px 20px; }
-  }
+  @media (max-width: 1100px){ .news-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px){ .news-grid{ grid-template-columns: 1fr; } main{ padding: 30px 20px; } }
   .avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; display: block; margin: 14px auto 12px; border: 3px solid rgba(255,255,255,0.85); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
   .resume { text-align: center; margin-top: 6px; }
   .resume a { display: inline-block; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 6px; }
@@ -49,7 +51,6 @@
 </head>
 <body>
 <div class="container">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div>
       <h1>SARA<br>SARTO</h1>
@@ -64,7 +65,6 @@
     </div>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main>
     <nav>
       <a href="#home" onclick="showSection('home'); return false;">HOME</a>
@@ -77,52 +77,51 @@
       <p>I completed my Ph.D. at the University of Modena and Reggio Emilia, conducting my research at <a href="https://aimagelab.ing.unimore.it/imagelab/">AImageLab</a>, co-advised by <a href="https://www.ritacucchiara.it/">Prof. Rita Cucchiara</a>, <a href="https://ailb-web.ing.unimore.it/~lorenzo/">Prof.Lorenzo Baraldi</a> and <a href="https://scholar.google.com/citations?user=DzgmSJEAAAAJ">Prof. Marcella Cornia</a>. I did a 6-month internship at Amazon in London during my PhD.</p>
       <p>At AImageLab, I worked on image captioning and evaluation and multimodal architectures. Nowadays, I am working on Multimodal LLMs, Retrieval-augmentation for multimodal models, and hallucination.</p>
 
-      <h3 id="news">NEWS</h3>
-      <p>November 2025: Our survey on Multimodal LLMs has been accepted at ACL Findings 2024!</p>
+      <h3>News</h3>
+      <div class="news-grid">
+        <article class="news-card">
+          <img src="/mnt/data/Screenshot 2025-11-22 alle 12.47.24.png" alt="ASN Full Professor Habilitation" />
+          <div class="news-content">
+            <h4 class="news-title">Full Professor Habilitation</h4>
+            <div class="news-date">Publication date: 11/13/2025</div>
+            <p class="news-text">🎉 Happy to share that I've obtained the National Italian Habilitation (ASN) as Full Professor (Fascia I) in Information Processing Systems (09/H1). 🎉</p>
+          </div>
+        </article>
+        <article class="news-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/High_Performance_Computing_Cluster.jpg/640px-High_Performance_Computing_Cluster.jpg" alt="EuroHPC grant" />
+          <div class="news-content">
+            <h4 class="news-title">EuroHPC Extreme Scale grant</h4>
+            <div class="news-date">Publication date: 10/04/2025</div>
+            <p class="news-text">Our project \"VISTA – Versatile Intelligent Systems for Tailored and Adaptive Next-Generation Multimodal AI\" was accepted for the <strong>EuroHPC Extreme Scale grant</strong>, with an allocation of almost 1M GPU hours. <a href="#" class="news-link">Read the news on the UNIMORE website</a></p>
+          </div>
+        </article>
+        <article class="news-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/NeurIPS_logo.png" alt="NeurIPS 2025" />
+          <div class="news-content">
+            <h4 class="news-title">Paper accepted to NeurIPS 2025</h4>
+            <div class="news-date">Publication date: 09/19/2025</div>
+            <p class="news-text">Our paper, <strong>vHector and HeisenVec</strong>: Scalable Vector Graphics Generation Through Large Language Models, has been accepted to <strong>NeurIPS 2025</strong>, Datasets and Benchmarks track!</p>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="publications">
-      <h3>SELECTED PUBLICATIONS</h3>
-
+      <h3>Selected Publications</h3>
       <div class="pub">
         <div class="pub-title"><a href="https://openaccess.thecvf.com/content/CVPR2023/html/Sarto_Positive-Augmented_Contrastive_Learning_for_Image_and_Video_Captioning_Evaluation_CVPR_2023_paper.html" target="_blank" rel="noopener">Positive-Augmented Contrastive Learning for Image and Video Captioning Evaluation (PAC-S)</a></div>
         <div class="pub-meta">Sara Sarto, Manuele Barraco, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · CVPR 2023 (Highlight)</div>
         <div class="pub-tldr">A learnable, CLIP-based metric for caption evaluation that achieves top correlation with human judgments; code: <a href="https://github.com/aimagelab/pacscore" target="_blank" rel="noopener">pacscore</a>.</div>
       </div>
-
       <div class="pub">
         <div class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2025W/MMFM/html/Cocchi_LLaVA-MORE_A_Comparative_Study_of_LLMs_and_Visual_Backbones_for_ICCVW_2025_paper.html" target="_blank" rel="noopener">LLaVA-MORE: A Comparative Study of LLMs and Visual Backbones for Enhanced Visual Instruction Tuning</a></div>
         <div class="pub-meta">Federico Cocchi, Nicholas Moratelli, Davide Caffagni, <strong>Sara Sarto</strong>, Lorenzo Baraldi, Marcella Cornia, Rita Cucchiara · ICCV 2025 Workshops</div>
         <div class="pub-tldr">Confronto controllato tra LLM e backbone visivi per MLLM; repo: <a href="https://github.com/aimagelab/LLaVA-MORE" target="_blank" rel="noopener">LLaVA-MORE</a>.</div>
       </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://arxiv.org/pdf/2402.12451" target="_blank" rel="noopener">The Revolution of Multimodal Large Language Models: A Survey</a></div>
-        <div class="pub-meta">Davide Caffagni, Federico Cocchi, Luca Barsellotti, Nicholas Moratelli, Sara Sarto, Lorenzo Baraldi, Marcella Cornia, Rita Cucchiara · ACL 2024 (Findings)</div>
-        <div class="pub-tldr">A comprehensive review of recent visual-based MLLMs, analyzing their architectural choices, multimodal alignment strategies, and training techniques.</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2023/html/Barraco_With_a_Little_Help_from_Your_Own_Past_Prototypical_Memory_ICCV_2023_paper.html" target="_blank" rel="noopener">With a Little Help from your own Past: Prototypical Memory Networks for Image Captioning</a></div>
-        <div class="pub-meta">Manuele Barraco, <strong>Sara Sarto</strong>, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · ICCV 2023</div>
-        <div class="pub-tldr">Introduces a prototypical memory that lets a captioning model attend over past activations; code: <a href="https://github.com/aimagelab/PMA-Net" target="_blank" rel="noopener">PMA-Net</a>.</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://arxiv.org/abs/2207.13162" target="_blank" rel="noopener">Retrieval-Augmented Transformer for Image Captioning</a></div>
-        <div class="pub-meta">Sara Sarto, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · CBMI 2022</div>
-        <div class="pub-tldr">Integra una memoria esterna tramite kNN-augmented attention per migliorare la generazione di didascalie.</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3663667" target="_blank" rel="noopener">Towards Retrieval-Augmented Architectures for Image Captioning</a></div>
-        <div class="pub-meta">Sara Sarto, Marcella Cornia, Lorenzo Baraldi, Alessandro Nicolosi, Rita Cucchiara · ACM TOMM 2024</div>
-        <div class="pub-tldr">Studio sistematico di architetture di captioning con memoria esterna; migliora la qualità delle caption su COCO e nocaps.</div>
-      </div>
     </section>
 
     <section id="projects">
-      <h3>PROJECTS</h3>
+      <h3>Projects</h3>
       <p>Coming soon.</p>
     </section>
 
@@ -134,9 +133,8 @@
 <script>
   function showSection(id) {
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-    const el = document.getElementById(id);
-    el.classList.add('active');
-    window.scrollTo({top: 0, behavior: 'instant'});
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }
 </script>
 </body>
