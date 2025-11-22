@@ -31,7 +31,8 @@
       justify-content: space-between;
       padding: 40px 20px;
     }
-
+    a { color: #555; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #333; }
     .sidebar h1 {
       font-size: 32px;
       letter-spacing: 2px;
@@ -386,6 +387,15 @@
       border-radius: 999px;
     }
 
+    .news-card img {
+      width: 100%;
+      height: 160px;
+      /* adjust the height you prefer */
+      object-fit: cover;
+      /* keeps it nicely cropped */
+      border-bottom: 1px solid #ddd;
+    }
+
     @media (min-width: 780px) {
       .v-timeline::before {
         left: 50%;
@@ -457,8 +467,8 @@
             href="https://aimagelab.ing.unimore.it/imagelab/">AImageLab</a>, co-advised by <a
             href="https://www.ritacucchiara.it/">Prof. Rita Cucchiara</a>, <a
             href="https://ailb-web.ing.unimore.it/~lorenzo/">Prof.Lorenzo Baraldi</a> and <a
-            href="https://scholar.google.com/citations?user=DzgmSJEAAAAJ">Prof. Marcella Cornia</a>. I did a 6-month
-          internship at Amazon in London during my PhD.</p>
+            href="https://scholar.google.com/citations?user=DzgmSJEAAAAJ">Prof. Marcella Cornia</a>. </p>
+        <p>During my Ph.D., I also spent six months as a research intern at Amazon in London.</p>
         <p>At AImageLab, I worked on image captioning and evaluation and multimodal architectures. Nowadays, I am
           working on Multimodal LLMs, Retrieval-augmentation for multimodal models, and hallucination.</p>
 
@@ -513,7 +523,7 @@
       <section id="cv">
         <h3>Some Important Milestones</h3>
         <ul class="v-timeline">
-           <li class="v-item">
+          <li class="v-item">
             <span class="v-marker"></span>
             <div class="v-content">
               <span class="v-date">2026</span>
@@ -576,14 +586,16 @@
         <p><strong>Participation to National and European Projects</strong></p>
         <div class="news-grid">
           <article class="news-card">
+            <img src="images/elliot-logo-800.png" alt="ELLIOT cover" />
             <div class="news-content">
-              <h4 class="news-title">AI4EU Project</h4>
-              <div class="news-date">2024 – Ongoing</div>
-              <p class="news-text">Contributing to the European initiative for developing trustworthy and explainable AI
+              <h4 class="news-title">ELLIOT Project</h4>
+              <div class="news-date">2025 – Ongoing</div>
+              <p class="news-text">Contributing to the European initiative for developing multimodal AI
                 systems.</p>
             </div>
           </article>
           <article class="news-card">
+            <img src="images/fair_project.png" />
             <div class="news-content">
               <h4 class="news-title">PRIN 2022: Vision-Language Reasoning</h4>
               <div class="news-date">2023 – Ongoing</div>
@@ -599,33 +611,33 @@
       </footer>
     </main>
   </div>
-<script>
-  // evita lo scroll automatico del browser
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
+  <script>
+    // evita lo scroll automatico del browser
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
-  function showSection(id) {
-    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // supporta sia ?section=... che #hash (fallback)
-    const params = new URLSearchParams(location.search);
-    const fromQuery = params.get('section');
-    const fromHash = location.hash.replace('#','');
+    document.addEventListener('DOMContentLoaded', () => {
+      // supporta sia ?section=... che #hash (fallback)
+      const params = new URLSearchParams(location.search);
+      const fromQuery = params.get('section');
+      const fromHash = location.hash.replace('#', '');
 
-    const target = (fromQuery && document.getElementById(fromQuery))
-      ? fromQuery
-      : (fromHash && document.getElementById(fromHash))
-        ? fromHash
-        : 'home';
+      const target = (fromQuery && document.getElementById(fromQuery))
+        ? fromQuery
+        : (fromHash && document.getElementById(fromHash))
+          ? fromHash
+          : 'home';
 
-    showSection(target);
-  });
-</script>
+      showSection(target);
+    });
+  </script>
 </body>
 
 </html>
