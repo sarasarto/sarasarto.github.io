@@ -599,21 +599,33 @@
       </footer>
     </main>
   </div>
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash && document.getElementById(hash)) {
-        showSection(hash);
-      } else {
-        showSection('home');
-      }
-    });
-  </script>
+<script>
+  // evita lo scroll automatico del browser
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // supporta sia ?section=... che #hash (fallback)
+    const params = new URLSearchParams(location.search);
+    const fromQuery = params.get('section');
+    const fromHash = location.hash.replace('#','');
+
+    const target = (fromQuery && document.getElementById(fromQuery))
+      ? fromQuery
+      : (fromHash && document.getElementById(fromHash))
+        ? fromHash
+        : 'home';
+
+    showSection(target);
+  });
+</script>
 </body>
 
 </html>
