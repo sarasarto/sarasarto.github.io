@@ -133,8 +133,14 @@
 </div>
 <script>
   function showSection(id) {
+    // document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    // document.getElementById(id).classList.add('active');
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+    const el = document.getElementById(id);
+    el.classList.add('active');
+
+    /* 🔽  AGGIUNTA: forza la vista in cima senza scroll */
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }
 </script>
 </body>
