@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sara Sarto</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -17,10 +15,7 @@
       background: #fff;
     }
 
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
+    .container { display: flex; min-height: 100vh; }
 
     .sidebar {
       width: 320px;
@@ -31,405 +26,145 @@
       justify-content: space-between;
       padding: 40px 20px;
     }
+
     a { color: #555; text-decoration: none; }
     a:hover { text-decoration: underline; color: #333; }
+
     .sidebar h1 {
-      font-size: 36px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-align: center;
-      margin: 0 0 10px;
+      font-size: 36px; letter-spacing: 2px; text-transform: uppercase;
+      text-align: center; margin: 0 0 10px;
     }
 
-    .sidebar h2 {
-      font-size: 20px;
-      font-weight: normal;
-      margin: 0 0 20px;
-      text-align: center;
-    }
+    .sidebar h2 { font-size: 20px; font-weight: normal; margin: 0 0 20px; text-align: center; }
 
-    .sidebar a {
-      color: #fff;
-      text-decoration: none;
-    }
+    .sidebar a { color: #fff; text-decoration: none; }
+    .sidebar a:hover { text-decoration: underline; }
 
-    .sidebar a:hover {
-      text-decoration: underline;
-    }
-
-    .sidebar .icons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .sidebar .icons a {
-      font-size: 30px;
-      text-decoration: none;
-      color: #fff;
-    }
+    .sidebar .icons { display: flex; gap: 16px; justify-content: center; margin-top: 20px; }
+    .sidebar .icons a { font-size: 30px; text-decoration: none; color: #fff; }
 
     nav {
-      text-align: left;
-      margin-bottom: 30px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 8px;
+      text-align: left; margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 8px;
     }
 
     nav a {
-      margin-right: 24px;
-      color: #e6b0d5;
-      text-decoration: none;
-      letter-spacing: 1px;
-      font-weight: 500;
+      margin-right: 24px; color: #e6b0d5; text-decoration: none; letter-spacing: 1px; font-weight: 500;
     }
+    nav a:hover { text-decoration: underline; }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    main { flex: 1; padding: 40px 60px; max-width: 980px; }
 
-    main {
-      flex: 1;
-      padding: 40px 60px;
-      max-width: 980px;
-    }
+    section { display: none; position: relative; top: 0; }
+    section.active { display: block; }
 
-    section {
-      display: none;
-      position: relative;
-      top: 0;
-    }
+    p { line-height: 1.7; margin-bottom: 1.1em; }
 
-    section.active {
-      display: block;
-    }
+    h3 { margin: 0 0 16px; font-size: 26px; letter-spacing: .5px; color: #2b2b2b; }
 
-    p {
-      line-height: 1.7;
-      margin-bottom: 1.1em;
-    }
+    /* Publications (kept as-is) */
+    .pub { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #ccc; }
+    .pub-title a { color: #555; text-decoration: none; }
+    .pub-title a:hover { text-decoration: underline; color: #333; }
+    .pub-title { font-weight: 600; font-size: 17px; color: #222; }
+    .pub-meta { color: #555; font-size: 14px; margin-top: 3px; }
+    .pub-tldr { font-size: 15px; color: #444; margin-top: 6px; }
 
-    h3 {
-      margin: 0 0 16px;
-      font-size: 26px;
-      letter-spacing: .5px;
-      color: #2b2b2b;
-    }
-
-    .pub {
-      margin-bottom: 25px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .pub-title a {
-      color: #555;
-      text-decoration: none;
-    }
-
-    .pub-title a:hover {
-      text-decoration: underline;
-      color: #333;
-    }
-
-    .pub-title {
-      font-weight: 600;
-      font-size: 17px;
-      color: #222;
-    }
-
-    .pub-meta {
-      color: #555;
-      font-size: 14px;
-      margin-top: 3px;
-    }
-
-    .pub-tldr {
-      font-size: 15px;
-      color: #444;
-      margin-top: 6px;
-    }
-
+    /* News cards */
     .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 20px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; margin-top: 20px;
     }
 
     .news-card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #fff;
+      border: 1px solid #ddd; border-radius: 10px; overflow: hidden; background: #fff;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
       transition: transform .2s ease, box-shadow .2s ease;
     }
-
-    .news-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-    }
+    .news-card:hover { transform: translateY(-4px); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08); }
 
     .news-card img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
+      width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid #ddd;
     }
 
-    .news-content {
-      padding: 16px 18px 18px;
-    }
+    .news-content { padding: 16px 18px 18px; }
+    .news-title { margin: 0 0 8px; font-weight: 700; font-size: 20px; color: #2b2b2b; }
+    .news-date { font-size: 13px; color: #7a7a7a; margin-bottom: 10px; }
+    .news-text { font-size: 15px; color: #414141; }
+    .news-link { color: #7a7a7a; text-decoration: none; font-weight: 600; }
+    .news-link:hover { text-decoration: underline; }
 
-    .news-title {
-      margin: 0 0 8px;
-      font-weight: 700;
-      font-size: 20px;
-      color: #2b2b2b;
-    }
+    footer { font-size: 14px; color: #888; margin-top: 40px; }
 
-    .news-date {
-      font-size: 13px;
-      color: #7a7a7a;
-      margin-bottom: 10px;
-    }
-
-    .news-text {
-      font-size: 15px;
-      color: #414141;
-    }
-
-    .news-link {
-      color: #7a7a7a;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .news-link:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      font-size: 14px;
-      color: #888;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 1100px) {
-      .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
+    @media (max-width: 1100px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 700px) {
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-
-      main {
-        padding: 30px 20px;
-      }
+      .news-grid { grid-template-columns: 1fr; }
+      main { padding: 30px 20px; }
     }
 
     .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 14px auto 12px;
-      border: 3px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      width: 140px; height: 140px; border-radius: 50%; object-fit: cover; display: block; margin: 14px auto 12px;
+      border: 3px solid rgba(255, 255, 255, 0.85); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
 
-    .resume {
-      text-align: center;
-      margin-top: 6px;
-    }
-
-    .resume a {
-      display: inline-block;
-      color: #fff;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 6px;
-    }
-
-    .resume a:hover {
-      text-decoration: underline;
-    }
+    .resume { text-align: center; margin-top: 6px; }
+    .resume a { display: inline-block; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 6px; }
+    .resume a:hover { text-decoration: underline; }
 
     /* --- Mobile & small-screen tweaks --- */
     @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        padding: 24px 16px;
-      }
-
-      .sidebar h1 {
-        font-size: 28px;
-      }
-
-      .sidebar h2 {
-        font-size: 14px;
-        margin-bottom: 12px;
-      }
-
-      .avatar {
-        width: 110px;
-        height: 110px;
-        margin: 10px auto;
-      }
-
-      main {
-        padding: 22px 16px;
-        max-width: none;
-      }
-
-      nav {
-        margin: 10px 0 16px;
-        padding-bottom: 6px;
-      }
-
-      nav a {
-        margin-right: 16px;
-        padding: 6px 0;
-        display: inline-block;
-      }
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; padding: 24px 16px; }
+      .sidebar h1 { font-size: 28px; }
+      .sidebar h2 { font-size: 14px; margin-bottom: 12px; }
+      .avatar { width: 110px; height: 110px; margin: 10px auto; }
+      main { padding: 22px 16px; max-width: none; }
+      nav { margin: 10px 0 16px; padding-bottom: 6px; }
+      nav a { margin-right: 16px; padding: 6px 0; display: inline-block; }
+      .news-card img { height: 130px; }
+      .news-title { font-size: 18px; }
+      .news-text { font-size: 14px; }
     }
 
     @media (max-width: 600px) {
-      .news-card img {
-        height: 130px;
-      }
-
-      .news-title {
-        font-size: 18px;
-      }
-
-      .news-text {
-        font-size: 14px;
-      }
-
-      .pub-title {
-        font-size: 16px;
-      }
+      .pub-title { font-size: 16px; }
     }
 
     /* Vertical Timeline (alternating cards) for CV */
-    .v-timeline {
-      position: relative;
-      list-style: none;
-      margin: 24px 0 8px;
-      padding: 0;
-    }
-
+    .v-timeline { position: relative; list-style: none; margin: 24px 0 8px; padding: 0; }
     .v-timeline::before {
-      content: "";
-      position: absolute;
-      left: 24px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: #f0ddec;
+      content: ""; position: absolute; left: 24px; top: 0; bottom: 0; width: 3px; background: #f0ddec;
     }
 
     .v-item {
-      position: relative;
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 12px;
-      margin-bottom: 26px;
+      position: relative; display: grid; grid-template-columns: 60px 1fr; gap: 12px; margin-bottom: 26px;
     }
 
     .v-marker {
-      position: relative;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: #ebc7df;
-      box-shadow: 0 0 0 4px #f7ecf4;
-      margin: 2px 0 0 16px;
+      position: relative; width: 16px; height: 16px; border-radius: 50%; background: #ebc7df;
+      box-shadow: 0 0 0 4px #f7ecf4; margin: 2px 0 0 16px;
     }
 
     .v-content {
-      background: #fff;
-      border: 1px solid #e9e9e9;
-      border-radius: 10px;
-      padding: 14px 16px;
+      background: #fff; border: 1px solid #e9e9e9; border-radius: 10px; padding: 14px 16px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
     }
 
-    .v-content h4 {
-      margin: 0 0 4px;
-      font-size: 18px;
-      color: #2b2b2b;
-    }
-
-    .v-content p {
-      margin: 0;
-      color: #545454;
-      font-size: 14px;
-    }
+    .v-content h4 { margin: 0 0 4px; font-size: 18px; color: #2b2b2b; }
+    .v-content p { margin: 0; color: #545454; font-size: 14px; }
 
     .v-date {
-      float: right;
-      background: #f7ecf4;
-      color: #6b5864;
-      font-weight: 600;
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 999px;
-    }
-
-    .news-card img {
-      width: 100%;
-      height: 160px;
-      /* adjust the height you prefer */
-      object-fit: cover;
-      /* keeps it nicely cropped */
-      border-bottom: 1px solid #ddd;
+      float: right; background: #f7ecf4; color: #6b5864; font-weight: 600; font-size: 12px;
+      padding: 4px 8px; border-radius: 999px;
     }
 
     @media (min-width: 780px) {
-      .v-timeline::before {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .v-item {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .v-item:nth-child(odd) {
-        grid-template-areas: "content spacer";
-      }
-
-      .v-item:nth-child(even) {
-        grid-template-areas: "spacer content";
-      }
-
-      .v-item:nth-child(odd) .v-content {
-        grid-area: content;
-        margin-right: 24px;
-      }
-
-      .v-item:nth-child(even) .v-content {
-        grid-area: content;
-        margin-left: 24px;
-      }
-
-      .v-item .v-marker {
-        position: absolute;
-        left: calc(50% - 8px);
-        top: 8px;
-        margin: 0;
-      }
+      .v-timeline::before { left: 50%; transform: translateX(-50%); }
+      .v-item { grid-template-columns: 1fr 1fr; }
+      .v-item:nth-child(odd) { grid-template-areas: "content spacer"; }
+      .v-item:nth-child(even) { grid-template-areas: "spacer content"; }
+      .v-item:nth-child(odd) .v-content { grid-area: content; margin-right: 24px; }
+      .v-item:nth-child(even) .v-content { grid-area: content; margin-left: 24px; }
+      .v-item .v-marker { position: absolute; left: calc(50% - 8px); top: 8px; margin: 0; }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -444,10 +179,8 @@
         <img class="avatar" src="images/personal.jpeg" alt="Sara Sarto" />
         <div class="resume"><a href="assets/CV_SartoSara (2).pdf">Resume</a></div>
         <div class="icons">
-          <a href="https://www.linkedin.com/in/sara-sarto-4520a4209/" aria-label="LinkedIn"><i
-              class="fab fa-linkedin"></i></a>
-          <a href="https://scholar.google.com/citations?user=Y-DaVvEAAAAJ" aria-label="Google Scholar"><i
-              class="fas fa-graduation-cap"></i></a>
+          <a href="https://www.linkedin.com/in/sara-sarto-4520a4209/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://scholar.google.com/citations?user=Y-DaVvEAAAAJ" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
           <a href="https://github.com/sarasarto" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
       </div>
@@ -458,87 +191,56 @@
         <a href="#home" onclick="showSection('home'); return false;">HOME</a>
         <a href="publications.html">PUBLICATIONS</a>
         <a href="#cv" onclick="showSection('cv'); return false;">CV</a>
+        <a href="#news" onclick="showSection('news'); return false;">NEWS</a>
         <a href="#projects" onclick="showSection('projects'); return false;">PROJECTS</a>
       </nav>
 
+      <!-- HOME -->
       <section id="home" class="active">
-        <!-- <p>I'm a PhD candidate working on multimodal AI.</p> -->
-        <p>I completed my Ph.D. at the University of Modena and Reggio Emilia, conducting my research at <a
-            href="https://aimagelab.ing.unimore.it/imagelab/">AImageLab</a>, co-advised by <a
-            href="https://www.ritacucchiara.it/">Prof. Rita Cucchiara</a>, <a
-            href="https://ailb-web.ing.unimore.it/~lorenzo/">Prof.Lorenzo Baraldi</a> and <a
-            href="https://scholar.google.com/citations?user=DzgmSJEAAAAJ">Prof. Marcella Cornia</a>. </p>
+        <p>I completed my Ph.D. at the University of Modena and Reggio Emilia, conducting my research at
+          <a href="https://aimagelab.ing.unimore.it/imagelab/">AImageLab</a>, co-advised by
+          <a href="https://www.ritacucchiara.it/">Prof. Rita Cucchiara</a>,
+          <a href="https://ailb-web.ing.unimore.it/~lorenzo/">Prof.Lorenzo Baraldi</a> and
+          <a href="https://scholar.google.com/citations?user=DzgmSJEAAAAJ">Prof. Marcella Cornia</a>.
+        </p>
         <p>
-          My current research focuses on cutting-edge <strong>multimodal architectures</strong> 
-          and their integration with <strong>advanced retrieval techniques</strong>. 
-          I have extensive experience with <strong>NLP</strong> tasks and 
-          <strong>foundation models</strong> such as CLIP, and have worked extensively 
-          with <strong>vision-and-language</strong> architectures, primarily focusing 
-          on their <strong>evaluation</strong> and addressing the problem of 
-          <strong>hallucination</strong>. 
-          Recently, I have been working on the training and development of 
+          My current research focuses on cutting-edge <strong>multimodal architectures</strong>
+          and their integration with <strong>advanced retrieval techniques</strong>.
+          I have extensive experience with <strong>NLP</strong> tasks and
+          <strong>foundation models</strong> such as CLIP, and have worked extensively
+          with <strong>vision-and-language</strong> architectures, primarily focusing
+          on their <strong>evaluation</strong> and addressing the problem of
+          <strong>hallucination</strong>.
+          Recently, I have been working on the training and development of
           <strong>multimodal large language models</strong>, including LLaVA and its derivatives.
         </p>
         <p>During my Ph.D., I also spent six months as a research intern at Amazon in London.</p>
-        <!-- <p>At AImageLab, I worked on image captioning and evaluation and multimodal architectures. Nowadays, I am -->
-          <!-- working on Multimodal LLMs, Retrieval-augmentation for multimodal models, and hallucination.</p> -->
 
-        <h3>News</h3>
-        <div class="news-grid">
-          <article class="news-card">
-            <div class="news-content">
-              <h4 class="news-title">EuroHPC Extreme Scale grant</h4>
-              <div class="news-date">Publication date: 10/04/2025</div>
-              <p class="news-text">Our project "VISTA – Versatile Intelligent Systems for Tailored and Adaptive
-                Next-Generation Multimodal AI" was accepted for the <strong>EuroHPC Extreme Scale grant</strong>, with
-                an allocation of almost 1M GPU hours. <a href="#" class="news-link">Read the news on the UNIMORE
-                  website</a></p>
-            </div>
-          </article>
-          <article class="news-card">
-            <div class="news-content">
-              <h4 class="news-title">Paper Accepted @CVPR</h4>
-              <div class="news-date">Publication date: 22/11/2025</div>
-              <p class="news-text">🎉 Happy to share that our paper <strong>"Recurrence-Enhanced Vision-and-Language
-                  Transformers for Robust Multimodal Document Retrieval"</strong> has been accepted at CVPR 2025 in
-                Nashville! 🎉</p>
-            </div>
-          </article>
-          <article class="news-card">
-            <div class="news-content">
-              <h4 class="news-title">Introducing LLaVA-MORE</h4>
-              <div class="news-date">Publication date: 08/03/2024</div>
-              <p class="news-text">🎉 We are introducing <strong>LLaVA-MORE</strong>, a family of models that enhances
-                LLaVA by integrating LLaMA 3.1 as the language model. Check out our <a
-                  href="https://github.com/aimagelab/LLaVA-MORE">Github repo</a>! 🎉</p>
-            </div>
-          </article>
+        <h3>Recent News</h3>
+        <div id="recent-news-grid" class="news-grid">
+          <!-- JS will inject the 3 most recent news items from #news -->
+          <noscript>
+            <!-- Fallback if JS disabled: keep three items here, or leave this note -->
+            <p>Please enable JavaScript to see the latest 3 news items.</p>
+          </noscript>
         </div>
 
-        <!-- <h3>Awards</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>CVPR Highlight Paper Award</h4> <span>2023 — Positive-Augmented Contrastive Learning (PAC-S)</span>
-          </div>
-          <div class="timeline-item">
-            <h4>Amazon Research Internship</h4> <span>2022 — 6-month internship at Amazon London</span>
-          </div>
-          <div class="timeline-item">
-            <h4>University Merit Scholarship</h4> <span>2020 — University of Modena and Reggio Emilia</span>
-          </div>
-        </div> -->
-
-      </section>
-
-      <!-- NEW CV SECTION with vertical timeline -->
-      <section id="cv">
-        <h3>Some Important Milestones</h3>
-         <div class="cv-actions">
-          <a class="btn btn-pink" href="assets/CV_SartoSara (2).pdf" target="_blank" rel="noopener" aria-label="Open CV PDF in a new tab">
-            <p><strong>View Full CV (PDF)</strong></p>
-           
+        <div style="margin-top: 14px;">
+          <a href="#news" onclick="showSection('news'); return false;" style="color:#e6b0d5; font-weight:600;">
+            → View All News
           </a>
         </div>
+      </section>
+
+      <!-- CV -->
+      <section id="cv">
+        <h3>Some Important Milestones</h3>
+        <div class="cv-actions">
+          <a class="btn btn-pink" href="assets/CV_SartoSara (2).pdf" target="_blank" rel="noopener" aria-label="Open CV PDF in a new tab">
+            <p><strong>View Full CV (PDF)</strong></p>
+          </a>
+        </div>
+
         <ul class="v-timeline">
           <li class="v-item">
             <span class="v-marker"></span>
@@ -553,7 +255,6 @@
             <div class="v-content">
               <span class="v-date">2025</span>
               <h4>Doctoral Consortium at CVPR 2025</h4>
-              <!-- <p>..</p> -->
             </div>
           </li>
           <li class="v-item">
@@ -569,7 +270,7 @@
             <div class="v-content">
               <span class="v-date">2022</span>
               <h4>Best Student Paper Award (CBMI)</h4>
-              <p>"Retrieval‑augmented Transformer for Image Captioning” </p>
+              <p>"Retrieval-augmented Transformer for Image Captioning” </p>
             </div>
           </li>
           <li class="v-item">
@@ -599,6 +300,48 @@
         </ul>
       </section>
 
+      <!-- NEWS (full archive) -->
+      <section id="news">
+        <h3>All News</h3>
+
+        <div id="all-news-grid" class="news-grid">
+          <!-- Use data-date in ISO (YYYY-MM-DD) for auto-sorting -->
+          <article class="news-card" data-date="2025-11-22">
+            <div class="news-content">
+              <h4 class="news-title">Paper Accepted @CVPR</h4>
+              <div class="news-date">Publication date: 22/11/2025</div>
+              <p class="news-text">🎉 Happy to share that our paper <strong>"Recurrence-Enhanced Vision-and-Language
+                  Transformers for Robust Multimodal Document Retrieval"</strong> has been accepted at CVPR 2025 in
+                Nashville! 🎉</p>
+            </div>
+          </article>
+
+          <article class="news-card" data-date="2025-04-10">
+            <div class="news-content">
+              <h4 class="news-title">EuroHPC Extreme Scale grant</h4>
+              <div class="news-date">Publication date: 10/04/2025</div>
+              <p class="news-text">Our project "VISTA – Versatile Intelligent Systems for Tailored and Adaptive
+                Next-Generation Multimodal AI" was accepted for the <strong>EuroHPC Extreme Scale grant</strong>, with
+                an allocation of almost 1M GPU hours. <a href="#" class="news-link">Read the news on the UNIMORE
+                  website</a></p>
+            </div>
+          </article>
+
+          <article class="news-card" data-date="2024-03-08">
+            <div class="news-content">
+              <h4 class="news-title">Introducing LLaVA-MORE</h4>
+              <div class="news-date">Publication date: 08/03/2024</div>
+              <p class="news-text">🎉 We are introducing <strong>LLaVA-MORE</strong>, a family of models that enhances
+                LLaVA by integrating LLaMA 3.1 as the language model. Check out our
+                <a href="https://github.com/aimagelab/LLaVA-MORE">Github repo</a>! 🎉</p>
+            </div>
+          </article>
+
+          <!-- Add more news items here following the same structure and data-date attribute -->
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
       <section id="projects">
         <p><strong>Participation to National and European Projects</strong></p>
         <div class="news-grid">
@@ -607,12 +350,11 @@
             <div class="news-content">
               <h4 class="news-title">ELLIOT Project</h4>
               <div class="news-date">2025 – Ongoing</div>
-              <p class="news-text">Contributing to the European initiative for developing multimodal AI
-                systems.</p>
+              <p class="news-text">Contributing to the European initiative for developing multimodal AI systems.</p>
             </div>
           </article>
           <article class="news-card">
-            <img src="images/fair_project.png" />
+            <img src="images/fair_project.png" alt="FAIR project" />
             <div class="news-content">
               <h4 class="news-title">PRIN 2022: Vision-Language Reasoning</h4>
               <div class="news-date">2023 – Ongoing</div>
@@ -628,11 +370,10 @@
       </footer>
     </main>
   </div>
+
   <script>
-    // evita lo scroll automatico del browser
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
+    // Avoid auto-scroll restore
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 
     function showSection(id) {
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
@@ -641,20 +382,34 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // supporta sia ?section=... che #hash (fallback)
+      // Router: supports ?section=... and #hash (fallback)
       const params = new URLSearchParams(location.search);
       const fromQuery = params.get('section');
       const fromHash = location.hash.replace('#', '');
-
       const target = (fromQuery && document.getElementById(fromQuery))
         ? fromQuery
         : (fromHash && document.getElementById(fromHash))
           ? fromHash
           : 'home';
-
       showSection(target);
+
+      // ---- Build Recent News (top 3 by date) from the All News list ----
+      const allNewsGrid = document.getElementById('all-news-grid');
+      const recentContainer = document.getElementById('recent-news-grid');
+      if (allNewsGrid && recentContainer) {
+        const items = Array.from(allNewsGrid.querySelectorAll('.news-card'));
+        // Sort by data-date (YYYY-MM-DD) descending
+        items.sort((a, b) => {
+          const da = a.getAttribute('data-date') || '1970-01-01';
+          const db = b.getAttribute('data-date') || '1970-01-01';
+          return new Date(db) - new Date(da);
+        });
+        // Take first 3 and clone into home
+        items.slice(0, 3).forEach(card => {
+          recentContainer.appendChild(card.cloneNode(true));
+        });
+      }
     });
   </script>
 </body>
-
 </html>

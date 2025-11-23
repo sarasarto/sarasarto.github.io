@@ -27,6 +27,40 @@
   h1.page { margin: 0 0 16px; font-size: 26px; letter-spacing: .5px; color: #2b2b2b; }
   p { line-height: 1.7; margin-bottom: 1.1em; }
 
+  /* --- NEWS (cards) --- */
+  .news-header { display:flex; align-items:baseline; gap:12px; margin: 8px 0 6px; }
+  .news-header h2 { margin:0; font-size:22px; }
+  .news-more { margin-left:auto; }
+  .news-more a { color:#e6b0d5; font-weight:600; text-decoration:none; }
+  .news-more a:hover { text-decoration:underline; }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin: 14px 0 28px;
+  }
+
+  .news-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  }
+  .news-card img { width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid #ddd; }
+  .news-content { padding: 16px 18px 18px; }
+  .news-title { margin: 0 0 8px; font-weight: 700; font-size: 20px; color: #2b2b2b; }
+  .news-date { font-size: 13px; color: #7a7a7a; margin-bottom: 10px; }
+  .news-text { font-size: 15px; color: #414141; }
+  .news-link { color: #7a7a7a; text-decoration: none; font-weight: 600; }
+  .news-link:hover { text-decoration: underline; }
+
   /* PUBLICATION ITEMS */
   .pub {
     display: flex;
@@ -38,18 +72,17 @@
   }
   .pub:last-of-type { border-bottom: none; }
 
-.pub-img {
-  width: 200px;                /* consistent width */
-  height: 180px;               /* consistent box height */
-  object-fit: contain;         /* show full image (no cropping) */
-  border-radius: 10px;
-  flex-shrink: 0;
-  background-color: #fff;      /* optional: white background for vertical images */
-  padding: 4px;                /* small inner padding for balance */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: #fff; /* optional background behind transparent imgs */
+  .pub-img {
+    width: 200px;                /* consistent width */
+    height: 180px;               /* consistent box height */
+    object-fit: contain;         /* show full image (no cropping) */
+    border-radius: 10px;
+    flex-shrink: 0;
+    background-color: #fff;      /* white bg for vertical images */
+    padding: 4px;                /* small inner padding for balance */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
 
-}
   .pub-text { flex: 1; }
 
   .pub-title a { color: #555; text-decoration: none; }
@@ -62,6 +95,9 @@
   footer { font-size: 14px; color: #888; margin-top: 40px; }
 
   /* MOBILE */
+  @media (max-width: 1100px) {
+    .news-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 900px){
     .container{ flex-direction: column; }
     .sidebar{ width: 100%; padding: 24px 16px; }
@@ -74,6 +110,9 @@
     .pub{ flex-direction: column; align-items: center; text-align: center; }
     .pub-img{ width: 100%; max-width: 220px; height: auto; }
     .pub-text{ text-align: left; }
+  }
+  @media (max-width: 700px) {
+    .news-grid { grid-template-columns: 1fr; }
   }
 
   .avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; display: block; margin: 14px auto 12px; border: 3px solid rgba(255,255,255,0.85); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
@@ -91,7 +130,7 @@
       <h1>SARA<br>SARTO</h1>
       <h2>sara.sarto@unimore.it</h2>
       <img class="avatar" src="images/personal.jpeg" alt="Sara Sarto" />
-      <div class="resume"><a href="#">Resume</a></div>
+      <div class="resume"><a href="assets/CV_SartoSara (2).pdf" target="_blank" rel="noopener">Resume</a></div>
       <div class="icons">
         <a href="https://www.linkedin.com/in/sara-sarto-4520a4209/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://scholar.google.com/citations?user=Y-DaVvEAAAAJ" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
@@ -106,11 +145,14 @@
       <a href="index.html">HOME</a>
       <a href="publications.html">PUBLICATIONS</a>
       <a href="index.html?section=cv">CV</a>
+      <a href="index.html#news">NEWS</a>
       <a href="index.html#projects">PROJECTS</a>
     </nav>
 
     <h1 class="page">Selected Publications</h1>
 
+    
+    <!-- PUBLICATIONS LIST -->
     <!-- CVPR 2025 -->
     <div class="pub">
       <img src="images/ret.png" alt="CVPR 2025" class="pub-img">
@@ -161,45 +203,15 @@
       </div>
     </div>
 
-    <!-- PAC-S / CVPR 2023 -->
-    <!-- <div class="pub">
-      <img src="images/paper6.jpg" alt="PAC-S" class="pub-img">
-      <div class="pub-text">
-        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/CVPR2023/html/Sarto_Positive-Augmented_Contrastive_Learning_for_Image_and_Video_Captioning_Evaluation_CVPR_2023_paper.html" target="_blank" rel="noopener">Positive-Augmented Contrastive Learning for Image and Video Captioning Evaluation (PAC-S)</a></div>
-        <div class="pub-meta">Sara Sarto, Manuele Barraco, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · <span class="venue">CVPR 2023</span> (Highlight)</div>
-        <div class="pub-tldr">A learnable, CLIP-based metric for caption evaluation that achieves top correlation with human judgments; code: <a href="https://github.com/aimagelab/pacscore" target="_blank" rel="noopener">pacscore</a>.</div>
-      </div>
-    </div> -->
-
-    <!-- PMA-Net / ICCV 2023 -->
-    <!-- <div class="pub">
-      <img src="images/ijcai.png" alt="ICCV 2023" class="pub-img">
-      <div class="pub-text">
-        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2023/html/Barraco_With_a_Little_Help_from_Your_Own_Past_Prototypical_Memory_ICCV_2023_paper.html" target="_blank" rel="noopener">With a Little Help from your own Past: Prototypical Memory Networks for Image Captioning</a></div>
-        <div class="pub-meta">Manuele Barraco, <strong>Sara Sarto</strong>, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · <span class="venue">ICCV 2023</span></div>
-        <div class="pub-tldr">Introduces a prototypical memory that lets a captioning model attend over past activations; code: <a href="https://github.com/aimagelab/PMA-Net" target="_blank" rel="noopener">PMA-Net</a>.</div>
-      </div>
-    </div> -->
-
     <!-- CBMI 2022 -->
     <div class="pub">
       <img src="images/cbmi.png" alt="CBMI 2022" class="pub-img">
       <div class="pub-text">
         <div class="pub-title"><a href="https://arxiv.org/abs/2207.13162" target="_blank" rel="noopener">Retrieval-Augmented Transformer for Image Captioning</a></div>
-        <div class="pub-meta"> <b>Sara Sarto*</b>, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · <span class="venue">CBMI 2022</span></div>
+        <div class="pub-meta"><b>Sara Sarto*</b>, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · <span class="venue">CBMI 2022</span></div>
         <div class="pub-tldr">An image captioning approach with a kNN memory, with retrieval from an external corpus to aid the generation process.</div>
       </div>
     </div>
-
-    <!-- ACM TOMM 2024 -->
-    <!-- <div class="pub">
-      <img src="images/cbmi.png" alt="ACM TOMM 2024" class="pub-img">
-      <div class="pub-text">
-        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3663667" target="_blank" rel="noopener">Towards Retrieval-Augmented Architectures for Image Captioning</a></div>
-        <div class="pub-meta">Sara Sarto, Marcella Cornia, Lorenzo Baraldi, Alessandro Nicolosi, Rita Cucchiara · <span class="venue">ACM TOMM 2024</span></div>
-        <div class="pub-tldr">Studio sistematico di architetture di captioning con memoria esterna; migliora la qualità delle caption su COCO e nocaps.</div>
-      </div>
-    </div> -->
 
     <footer>
       Last updated November 2025.
