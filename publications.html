@@ -1,4 +1,3 @@
-<!-- publications.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +8,15 @@
   * { box-sizing: border-box; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #222; background: #fff; }
   .container { display: flex; min-height: 100vh; }
+
   /* LEFT SIDEBAR */
   .sidebar { width: 320px; background: #ebc7df; color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 20px; }
-  .sidebar h1 { font-size: 32px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
-  .sidebar h2 { font-size: 16px; font-weight: normal; margin: 0 0 20px; text-align: center; }
+  .sidebar h1 { font-size: 36px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
+  .sidebar h2 { font-size: 20px; font-weight: normal; margin: 0 0 20px; text-align: center; }
   .sidebar a { color: #fff; text-decoration: none; }
   .sidebar a:hover { text-decoration: underline; }
   .sidebar .icons { display: flex; gap: 16px; justify-content: center; margin-top: 20px; }
-  .sidebar .icons a { font-size: 22px; text-decoration: none; color: #fff; }
+  .sidebar .icons a { font-size: 30px; text-decoration: none; color: #fff; }
 
   /* MAIN */
   main { flex: 1; padding: 40px 60px; max-width: 980px; }
@@ -28,12 +28,35 @@
   p { line-height: 1.7; margin-bottom: 1.1em; }
 
   /* PUBLICATION ITEMS */
-  .pub { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #ccc; }
+  .pub {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
   .pub:last-of-type { border-bottom: none; }
+
+.pub-img {
+  width: 200px;                /* consistent width */
+  height: 180px;               /* consistent box height */
+  object-fit: contain;         /* show full image (no cropping) */
+  border-radius: 10px;
+  flex-shrink: 0;
+  background-color: #fff;      /* optional: white background for vertical images */
+  padding: 4px;                /* small inner padding for balance */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fff; /* optional background behind transparent imgs */
+
+}
+  .pub-text { flex: 1; }
+
   .pub-title a { color: #555; text-decoration: none; }
   .pub-title a:hover { text-decoration: underline; color: #333; }
   .pub-title { font-weight: 600; font-size: 17px; color: #222; }
   .pub-meta { color: #555; font-size: 14px; margin-top: 3px; }
+  .pub-meta .venue { color: #e6b0d5; font-weight: 600; }
   .pub-tldr { font-size: 15px; color: #444; margin-top: 6px; }
 
   footer { font-size: 14px; color: #888; margin-top: 40px; }
@@ -48,7 +71,11 @@
     main{ padding: 22px 16px; max-width: none; }
     nav{ margin: 10px 0 16px; padding-bottom: 6px; }
     nav a{ margin-right: 16px; padding: 6px 0; display: inline-block; }
+    .pub{ flex-direction: column; align-items: center; text-align: center; }
+    .pub-img{ width: 100%; max-width: 220px; height: auto; }
+    .pub-text{ text-align: left; }
   }
+
   .avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; display: block; margin: 14px auto 12px; border: 3px solid rgba(255,255,255,0.85); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
   .resume { text-align: center; margin-top: 6px; }
   .resume a { display: inline-block; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 6px; }
@@ -58,7 +85,7 @@
 </head>
 <body>
 <div class="container">
-  <!-- SIDEBAR (same look & feel as index) -->
+  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div>
       <h1>SARA<br>SARTO</h1>
@@ -78,53 +105,101 @@
     <nav>
       <a href="index.html">HOME</a>
       <a href="publications.html">PUBLICATIONS</a>
-<a href="index.html?section=cv">CV</a>
+      <a href="index.html?section=cv">CV</a>
       <a href="index.html#projects">PROJECTS</a>
     </nav>
 
     <h1 class="page">Selected Publications</h1>
 
+    <!-- CVPR 2025 -->
+    <div class="pub">
+      <img src="images/ret.png" alt="CVPR 2025" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="#">Recurrence-Enhanced Vision-and-Language Transformers for Robust Multimodal Document Retrieval</a></div>
+        <div class="pub-meta">Davide Caffagni*, <b>Sara Sarto*</b>, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">CVPR 2025</span></div>
+        <div class="pub-tldr">An approach enabling multimodal queries — image + text — to search multimodal document collections through a novel Transformer-based recurrent cell integrating textual and visual features across layers.</div>
+      </div>
+    </div>
+
+    <!-- ICCV Workshop 2025 -->
+    <div class="pub">
+      <img src="images/llvamore.png" alt="ICCV Workshop 2025" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="#">LLaVA-MORE: A Comparative Study of LLMs and Visual Backbones for Enhanced Visual Instruction Tuning</a></div>
+        <div class="pub-meta">Federico Cocchi*, Nicholas Moratelli*, Davide Caffagni*, <b>Sara Sarto*</b>, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">ICCV Workshop 2025</span></div>
+        <div class="pub-tldr">A new family of MLLMs integrating modern language models with diverse visual backbones.</div>
+      </div>
+    </div>
+
+    <!-- IJCAI 2025 -->
+    <div class="pub">
+      <img src="images/ijcai.png" alt="IJCAI 2025" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="#">Image Captioning Evaluation in the Age of Multimodal LLMs: Challenges and Future Perspectives</a></div>
+        <div class="pub-meta"><b>Sara Sarto</b>, M. Cornia, R. Cucchiara · <span class="venue">IJCAI 2025</span></div>
+        <div class="pub-tldr">An overview of image captioning evaluation, discussing metric evolution, limitations, challenges from longer MLLM captions, and metric adaptability.</div>
+      </div>
+    </div>
+
+    <!-- CVPR Workshop 2024 -->
+    <div class="pub">
+      <img src="images/wiki.png" alt="CVPR Workshop 2024" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="#">Wiki-LLaVA: Hierarchical Retrieval-Augmented Generation for Multimodal LLMs</a></div>
+        <div class="pub-meta">D. Caffagni*, F. Cocchi*, N. Moratelli*, <b>Sara Sarto*</b>, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">CVPR Workshop 2024</span></div>
+        <div class="pub-tldr">Integration of external document knowledge into an MLLM through hierarchical retrieval.</div>
+      </div>
+    </div>
+
+    <!-- ACL Findings 2024 -->
+    <div class="pub">
+      <img src="images/survey.png" alt="ACL 2024" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2402.12451" target="_blank" rel="noopener">The Revolution of Multimodal Large Language Models: A Survey</a></div>
+        <div class="pub-meta">D. Caffagni*, F. Cocchi*, L. Barsellotti*, N. Moratelli*, <b>Sara Sarto*</b>, L. Baraldi*, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">ACL Findings 2024</span></div>
+        <div class="pub-tldr">A comprehensive review of recent visual-based MLLMs, analyzing architectures, alignment strategies, and training techniques.</div>
+      </div>
+    </div>
+
     <!-- PAC-S / CVPR 2023 -->
-    <div class="pub">
-      <div class="pub-title"><a href="https://openaccess.thecvf.com/content/CVPR2023/html/Sarto_Positive-Augmented_Contrastive_Learning_for_Image_and_Video_Captioning_Evaluation_CVPR_2023_paper.html" target="_blank" rel="noopener">Positive-Augmented Contrastive Learning for Image and Video Captioning Evaluation (PAC-S)</a></div>
-      <div class="pub-meta">Sara Sarto, Manuele Barraco, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · CVPR 2023 (Highlight)</div>
-      <div class="pub-tldr">A learnable, CLIP-based metric for caption evaluation that achieves top correlation with human judgments; code: <a href="https://github.com/aimagelab/pacscore" target="_blank" rel="noopener">pacscore</a>.</div>
-    </div>
-
-    <!-- LLaVA-MORE / ICCV 2025 Workshops -->
-    <div class="pub">
-      <div class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2025W/MMFM/html/Cocchi_LLaVA-MORE_A_Comparative_Study_of_LLMs_and_Visual_Backbones_for_ICCVW_2025_paper.html" target="_blank" rel="noopener">LLaVA-MORE: A Comparative Study of LLMs and Visual Backbones for Enhanced Visual Instruction Tuning</a></div>
-      <div class="pub-meta">Federico Cocchi, Nicholas Moratelli, Davide Caffagni, <strong>Sara Sarto</strong>, Lorenzo Baraldi, Marcella Cornia, Rita Cucchiara · ICCV 2025 Workshops</div>
-      <div class="pub-tldr">Confronto controllato tra LLM e backbone visivi per MLLM; repo: <a href="https://github.com/aimagelab/LLaVA-MORE" target="_blank" rel="noopener">LLaVA-MORE</a>.</div>
-    </div>
-
-    <!-- SURVEY / ACL 2024 -->
-    <div class="pub">
-      <div class="pub-title"><a href="https://arxiv.org/pdf/2402.12451" target="_blank" rel="noopener">The Revolution of Multimodal Large Language Models: A Survey</a></div>
-      <div class="pub-meta">Davide Caffagni, Federico Cocchi, Luca Barsellotti, Nicholas Moratelli, Sara Sarto, Lorenzo Baraldi, Marcella Cornia, Rita Cucchiara · ACL 2024 (Findings)</div>
-      <div class="pub-tldr">A comprehensive review of recent visual-based MLLMs, analyzing their architectural choices, multimodal alignment strategies, and training techniques.</div>
-    </div>
+    <!-- <div class="pub">
+      <img src="images/paper6.jpg" alt="PAC-S" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/CVPR2023/html/Sarto_Positive-Augmented_Contrastive_Learning_for_Image_and_Video_Captioning_Evaluation_CVPR_2023_paper.html" target="_blank" rel="noopener">Positive-Augmented Contrastive Learning for Image and Video Captioning Evaluation (PAC-S)</a></div>
+        <div class="pub-meta">Sara Sarto, Manuele Barraco, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · <span class="venue">CVPR 2023</span> (Highlight)</div>
+        <div class="pub-tldr">A learnable, CLIP-based metric for caption evaluation that achieves top correlation with human judgments; code: <a href="https://github.com/aimagelab/pacscore" target="_blank" rel="noopener">pacscore</a>.</div>
+      </div>
+    </div> -->
 
     <!-- PMA-Net / ICCV 2023 -->
+    <!-- <div class="pub">
+      <img src="images/ijcai.png" alt="ICCV 2023" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2023/html/Barraco_With_a_Little_Help_from_Your_Own_Past_Prototypical_Memory_ICCV_2023_paper.html" target="_blank" rel="noopener">With a Little Help from your own Past: Prototypical Memory Networks for Image Captioning</a></div>
+        <div class="pub-meta">Manuele Barraco, <strong>Sara Sarto</strong>, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · <span class="venue">ICCV 2023</span></div>
+        <div class="pub-tldr">Introduces a prototypical memory that lets a captioning model attend over past activations; code: <a href="https://github.com/aimagelab/PMA-Net" target="_blank" rel="noopener">PMA-Net</a>.</div>
+      </div>
+    </div> -->
+
+    <!-- CBMI 2022 -->
     <div class="pub">
-      <div class="pub-title"><a href="https://openaccess.thecvf.com/content/ICCV2023/html/Barraco_With_a_Little_Help_from_Your_Own_Past_Prototypical_Memory_ICCV_2023_paper.html" target="_blank" rel="noopener">With a Little Help from your own Past: Prototypical Memory Networks for Image Captioning</a></div>
-      <div class="pub-meta">Manuele Barraco, <strong>Sara Sarto</strong>, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · ICCV 2023</div>
-      <div class="pub-tldr">Introduces a prototypical memory that lets a captioning model attend over past activations; code: <a href="https://github.com/aimagelab/PMA-Net" target="_blank" rel="noopener">PMA-Net</a>.</div>
+      <img src="images/cbmi.png" alt="CBMI 2022" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://arxiv.org/abs/2207.13162" target="_blank" rel="noopener">Retrieval-Augmented Transformer for Image Captioning</a></div>
+        <div class="pub-meta"> <b>Sara Sarto*</b>, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · <span class="venue">CBMI 2022</span></div>
+        <div class="pub-tldr">An image captioning approach with a kNN memory, with retrieval from an external corpus to aid the generation process.</div>
+      </div>
     </div>
 
-    <!-- CBMI 2022 / Retrieval-Augmented Transformer -->
-    <div class="pub">
-      <div class="pub-title"><a href="https://arxiv.org/abs/2207.13162" target="_blank" rel="noopener">Retrieval-Augmented Transformer for Image Captioning</a></div>
-      <div class="pub-meta">Sara Sarto, Marcella Cornia, Lorenzo Baraldi, Rita Cucchiara · CBMI 2022</div>
-      <div class="pub-tldr">Integra una memoria esterna tramite kNN-augmented attention per migliorare la generazione di didascalie.</div>
-    </div>
-
-    <!-- ACM TOMM 2024 / Journal extension -->
-    <div class="pub">
-      <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3663667" target="_blank" rel="noopener">Towards Retrieval-Augmented Architectures for Image Captioning</a></div>
-      <div class="pub-meta">Sara Sarto, Marcella Cornia, Lorenzo Baraldi, Alessandro Nicolosi, Rita Cucchiara · ACM TOMM 2024</div>
-      <div class="pub-tldr">Studio sistematico di architetture di captioning con memoria esterna; migliora la qualità delle caption su COCO e nocaps.</div>
-    </div>
+    <!-- ACM TOMM 2024 -->
+    <!-- <div class="pub">
+      <img src="images/cbmi.png" alt="ACM TOMM 2024" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3663667" target="_blank" rel="noopener">Towards Retrieval-Augmented Architectures for Image Captioning</a></div>
+        <div class="pub-meta">Sara Sarto, Marcella Cornia, Lorenzo Baraldi, Alessandro Nicolosi, Rita Cucchiara · <span class="venue">ACM TOMM 2024</span></div>
+        <div class="pub-tldr">Studio sistematico di architetture di captioning con memoria esterna; migliora la qualità delle caption su COCO e nocaps.</div>
+      </div>
+    </div> -->
 
     <footer>
       Last updated November 2025.
