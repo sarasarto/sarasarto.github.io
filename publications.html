@@ -4,15 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Publications — Sara Sarto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #222; background: #fff; }
+  body { margin: 0; font-family: "Montserrat", Arial, sans-serif; color: #222; background: #fff; }
   .container { display: flex; min-height: 100vh; }
 
   /* LEFT SIDEBAR */
   .sidebar { width: 320px; background: #ebc7df; color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 20px; }
-  .sidebar h1 { font-size: 36px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
-  .sidebar h2 { font-size: 20px; font-weight: normal; margin: 0 0 20px; text-align: center; }
+  .sidebar h1 { font-family: "Montserrat", Arial, sans-serif; font-size: 36px; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
+  .sidebar-role { font-size: 18px; font-weight: 600; letter-spacing: .5px; text-align: center; margin: 0 0 8px; }
+  .sidebar-email { display: block; font-size: 16px; text-align: center; margin-bottom: 18px; }
   .sidebar a { color: #fff; text-decoration: none; }
   .sidebar a:hover { text-decoration: underline; }
   .sidebar .icons { display: flex; gap: 16px; justify-content: center; margin-top: 20px; }
@@ -24,7 +28,26 @@
   nav a { margin-right: 24px; color: #e6b0d5; text-decoration: none; letter-spacing: 1px; font-weight: 500; }
   nav a:hover { text-decoration: underline; }
 
-  h1.page { margin: 0 0 16px; font-size: 26px; letter-spacing: .5px; color: #2b2b2b; }
+  .nav-dropdown { position: relative; display: inline-block; margin-right: 24px; }
+  .nav-dropdown summary {
+    color: #e6b0d5; cursor: pointer; list-style: none; letter-spacing: 1px; font-weight: 500;
+  }
+  .nav-dropdown summary::-webkit-details-marker { display: none; }
+  .nav-dropdown summary::after { content: "▾"; margin-left: 6px; font-size: 11px; }
+  .nav-dropdown[open] summary::after { content: "▴"; }
+  .nav-dropdown-menu {
+    position: absolute; z-index: 10; top: calc(100% + 10px); left: 0; min-width: 170px;
+    padding: 6px; border: 1px solid #e2e2e2; border-radius: 8px; background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .10);
+  }
+  .nav-dropdown-menu a {
+    display: block; margin: 0; padding: 9px 10px; border-radius: 5px; color: #555;
+    font-size: 13px; white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { background: #f7ecf4; color: #333; text-decoration: none; }
+  .nav-dropdown-menu a[aria-current="page"] { background: #f7ecf4; color: #6b5864; font-weight: 700; }
+
+  h1.page { margin: 0 0 16px; font-family: "Montserrat", Arial, sans-serif; font-size: 26px; font-weight: 400; letter-spacing: .5px; color: #2b2b2b; }
   p { line-height: 1.7; margin-bottom: 1.1em; }
 
   /* --- NEWS (cards) --- */
@@ -70,6 +93,7 @@
     padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
   }
+  .pub[hidden] { display: none; }
   .pub:last-of-type { border-bottom: none; }
 
   .pub-img {
@@ -102,7 +126,8 @@
     .container{ flex-direction: column; }
     .sidebar{ width: 100%; padding: 24px 16px; }
     .sidebar h1{ font-size: 28px; }
-    .sidebar h2{ font-size: 14px; margin-bottom: 12px; }
+    .sidebar-role{ font-size: 15px; margin-bottom: 6px; }
+    .sidebar-email{ font-size: 14px; margin-bottom: 12px; }
     .avatar{ width: 110px; height: 110px; margin: 10px auto; }
     main{ padding: 22px 16px; max-width: none; }
     nav{ margin: 10px 0 16px; padding-bottom: 6px; }
@@ -128,7 +153,8 @@
   <aside class="sidebar">
     <div>
       <h1>SARA<br>SARTO</h1>
-      <h2>sara.sarto@unimore.it</h2>
+      <p class="sidebar-role">Postdoctoral Researcher</p>
+      <a class="sidebar-email" href="mailto:sara.sarto@unimore.it">sara.sarto@unimore.it</a>
       <img class="avatar" src="images/personal.jpeg" alt="Sara Sarto" />
       <div class="resume"><a href="assets/CV_SartoSara (2).pdf" target="_blank" rel="noopener">Resume</a></div>
       <div class="icons">
@@ -143,7 +169,14 @@
   <main>
     <nav>
       <a href="index.html">HOME</a>
-      <a href="publications.html">PUBLICATIONS</a>
+      <details class="nav-dropdown">
+        <summary>PUBLICATIONS</summary>
+        <div class="nav-dropdown-menu">
+          <a href="publications.html?category=selected" data-category-link="selected">SELECTED</a>
+          <a href="publications.html?category=conferences" data-category-link="conferences">CONFERENCES</a>
+          <a href="publications.html?category=journals" data-category-link="journals">JOURNALS</a>
+        </div>
+      </details>
       <a href="index.html?section=cv">CV</a>
       <a href="index.html#news">NEWS</a>
       <a href="index.html#projects">PROJECTS</a>
@@ -154,10 +187,10 @@
     
     <!-- PUBLICATIONS LIST -->
     <!-- CVPR 2026 -->
-    <div class="pub">
+    <div class="pub" data-category="conferences" data-selected="true">
       <img src="images/reag.png" alt="CVPR 2025" class="pub-img">
       <div class="pub-text">
-        <div class="pub-title"><a href="#">ReAG: Reasoning-Augmented Generation for Knowledge-based Visual Question Answering</a></div>
+        <div class="pub-title"><a href="https://aimagelab.github.io/ReAG/">ReAG: Reasoning-Augmented Generation for Knowledge-based Visual Question Answering</a></div>
         <div class="pub-meta">A. Compagnoni*, M. Morini*, <b>Sara Sarto*</b>, F. Cocchi, D. Caffagni, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">CVPR 2026 (Highlight)</span></div>
         <div class="pub-tldr">A novel Reasoning‑Augmented Multimodal RAG approach that combines coarse‑ and fine‑grained retrieval with a critic model that filters irrel‑
 evant passages, ensuring high‑quality additional context. The model follows a multi‑stage training strategy leveraging reinforcement learning
@@ -165,27 +198,37 @@ to enhance reasoning over retrieved content, while supervised fine‑tuning serv
       </div>
     </div>
     <!-- CVPR 2025 -->
-    <div class="pub">
+    <div class="pub" data-category="conferences" data-selected="true">
       <img src="images/ret.png" alt="CVPR 2025" class="pub-img">
       <div class="pub-text">
-        <div class="pub-title"><a href="#">Recurrence-Enhanced Vision-and-Language Transformers for Robust Multimodal Document Retrieval</a></div>
+        <div class="pub-title"><a href="https://github.com/aimagelab/ReT">Recurrence-Enhanced Vision-and-Language Transformers for Robust Multimodal Document Retrieval</a></div>
         <div class="pub-meta">Davide Caffagni*, <b>Sara Sarto*</b>, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">CVPR 2025</span></div>
         <div class="pub-tldr">An approach enabling multimodal queries — image + text — to search multimodal document collections through a novel Transformer-based recurrent cell integrating textual and visual features across layers.</div>
       </div>
     </div>
 
+    <!-- IJCV 2025 -->
+    <div class="pub" data-category="journals" data-selected="true">
+      <img src="images/pac_s_plus_plus.png" alt="Overview of the PAC-S++ positive-augmented contrastive learning method" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2410.07336" target="_blank" rel="noopener">Positive-Augmented Contrastive Learning for Vision-and-Language Evaluation and Training</a></div>
+        <div class="pub-meta"><b>Sara Sarto*</b>, N. Moratelli*, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">International journals of Computer Vision (IJCV) 2025</span></div>
+        <div class="pub-tldr">PAC-S++ strengthens CLIP-based caption evaluation with generated positive visual and textual samples, improving alignment with human judgments and serving as a reward for captioning models.</div>
+      </div>
+    </div>
+
     <!-- ICCV Workshop 2025 -->
-    <div class="pub">
+    <div class="pub" data-category="conferences" data-selected="true">
       <img src="images/llvamore.png" alt="ICCV Workshop 2025" class="pub-img">
       <div class="pub-text">
-        <div class="pub-title"><a href="#">LLaVA-MORE: A Comparative Study of LLMs and Visual Backbones for Enhanced Visual Instruction Tuning</a></div>
+        <div class="pub-title"><a href="https://github.com/aimagelab/LLaVA-MORE">LLaVA-MORE: A Comparative Study of LLMs and Visual Backbones for Enhanced Visual Instruction Tuning</a></div>
         <div class="pub-meta">Federico Cocchi*, Nicholas Moratelli*, Davide Caffagni*, <b>Sara Sarto*</b>, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">ICCV Workshop 2025</span></div>
         <div class="pub-tldr">A new family of MLLMs integrating modern language models with diverse visual backbones.</div>
       </div>
     </div>
 
     <!-- IJCAI 2025 -->
-    <div class="pub">
+    <div class="pub" data-category="conferences" data-selected="true">
       <img src="images/ijcai.png" alt="IJCAI 2025" class="pub-img">
       <div class="pub-text">
         <div class="pub-title"><a href="#">Image Captioning Evaluation in the Age of Multimodal LLMs: Challenges and Future Perspectives</a></div>
@@ -195,7 +238,7 @@ to enhance reasoning over retrieved content, while supervised fine‑tuning serv
     </div>
 
     <!-- CVPR Workshop 2024 -->
-    <div class="pub">
+    <div class="pub" data-category="conferences" data-selected="true">
       <img src="images/wiki.png" alt="CVPR Workshop 2024" class="pub-img">
       <div class="pub-text">
         <div class="pub-title"><a href="#">Wiki-LLaVA: Hierarchical Retrieval-Augmented Generation for Multimodal LLMs</a></div>
@@ -205,7 +248,7 @@ to enhance reasoning over retrieved content, while supervised fine‑tuning serv
     </div>
 
     <!-- ACL Findings 2024 -->
-    <div class="pub">
+    <div class="pub" data-category="conferences" data-selected="true">
       <img src="images/survey.png" alt="ACL 2024" class="pub-img">
       <div class="pub-text">
         <div class="pub-title"><a href="https://arxiv.org/pdf/2402.12451" target="_blank" rel="noopener">The Revolution of Multimodal Large Language Models: A Survey</a></div>
@@ -215,7 +258,7 @@ to enhance reasoning over retrieved content, while supervised fine‑tuning serv
     </div>
 
     <!-- CBMI 2022 -->
-    <div class="pub">
+    <div class="pub" data-category="conferences" data-selected="true">
       <img src="images/cbmi.png" alt="CBMI 2022" class="pub-img">
       <div class="pub-text">
         <div class="pub-title"><a href="https://arxiv.org/abs/2207.13162" target="_blank" rel="noopener">Retrieval-Augmented Transformer for Image Captioning</a></div>
@@ -224,10 +267,75 @@ to enhance reasoning over retrieved content, while supervised fine‑tuning serv
       </div>
     </div>
 
+    <!-- IJCV 2025 -->
+    <div class="pub" data-category="journals">
+      <img src="images/pac_s_plus_plus.png" alt="Overview of the PAC-S++ positive-augmented contrastive learning method" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2410.07336" target="_blank" rel="noopener">Positive-Augmented Contrastive Learning for Vision-and-Language Evaluation and Training</a></div>
+        <div class="pub-meta"><b>Sara Sarto*</b>, N. Moratelli*, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">International journals of Computer Vision (IJCV) 2025</span></div>
+        <div class="pub-tldr">PAC-S++ strengthens CLIP-based caption evaluation with generated positive visual and textual samples, improving alignment with human judgments and serving as a reward for captioning models.</div>
+      </div>
+    </div>
+
+    <!-- IEEE Intelligent Systems 2024 -->
+    <div class="pub" data-category="journals">
+      <img src="images/wf_net.png" alt="WF-Net weight-filtering layers for CNN and Transformer architectures" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://arxiv.org/pdf/2304.02049" target="_blank" rel="noopener">Multi-Class Unlearning for Image Classification via Weight Filtering</a></div>
+        <div class="pub-meta">S. Poppi, <b>Sara Sarto</b>, M. Cornia, L. Baraldi, R. Cucchiara · <span class="venue">IEEE Intelligent Systems 2024</span></div>
+        <div class="pub-tldr">A single-round framework that uses weight-filtering layers to selectively unlearn any image class in CNNs or Vision Transformers while exposing class-component relationships.</div>
+      </div>
+    </div>
+
+    <!-- ACM TOMM 2024 -->
+    <div class="pub" data-category="journals">
+      <img src="images/retrieval_augmented_captioning.png" alt="Retrieval-augmented self-attention and cross-attention captioning architectures" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3663667" target="_blank" rel="noopener">Towards Retrieval-Augmented Architectures for Image Captioning</a></div>
+        <div class="pub-meta"><b>Sara Sarto</b>, M. Cornia, L. Baraldi, A. Nicolosi, R. Cucchiara · <span class="venue">ACM Transactions on Multimedia Computing, Communications and Applications (TOMM) 2024</span></div>
+        <div class="pub-tldr">Two retrieval-augmented image captioning variants combine a visual kNN retriever with either self-attention prefixes or kNN cross-attention over captions stored in an external memory.</div>
+      </div>
+    </div>
+
+    <!-- IEEE Computer 2024 -->
+    <div class="pub" data-category="journals">
+      <img src="images/privacy_surveillance.png" alt="Privacy-preserving action recognition and image description pipeline" class="pub-img">
+      <div class="pub-text">
+        <div class="pub-title"><a href="https://iris.unimore.it/bitstream/11380/1315826/4/2023_IEEE_Computer_Privacy.pdf" target="_blank" rel="noopener">Video Surveillance and Privacy: A Solvable Paradox?</a></div>
+        <div class="pub-meta">R. Cucchiara, L. Baraldi, M. Cornia, <b>Sara Sarto</b> · <span class="venue">IEEE Computer 2024</span></div>
+        <div class="pub-tldr">A survey and experimental perspective showing how anonymization and knowledge distillation can support action recognition and image description without exposing personal identity.</div>
+      </div>
+    </div>
+
     <footer>
-      Last updated November 2025.
+      Last updated August 2026.
     </footer>
   </main>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const validCategories = ['selected', 'conferences', 'journals'];
+    const requestedCategory = new URLSearchParams(window.location.search).get('category');
+    const category = validCategories.includes(requestedCategory) ? requestedCategory : 'selected';
+
+    const headings = {
+      selected: 'Selected Publications',
+      conferences: 'Conference Publications',
+      journals: 'Journal Publications'
+    };
+
+    document.querySelector('h1.page').textContent = headings[category];
+    document.querySelectorAll('.pub').forEach(publication => {
+      const isVisible = category === 'selected'
+        ? publication.dataset.selected === 'true'
+        : publication.dataset.category === category;
+      publication.hidden = !isVisible;
+    });
+
+    document.querySelectorAll('[data-category-link]').forEach(link => {
+      if (link.dataset.categoryLink === category) link.setAttribute('aria-current', 'page');
+    });
+  });
+</script>
 </body>
 </html>
